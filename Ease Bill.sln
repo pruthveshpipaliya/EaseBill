@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ease Bill", "Ease Bill\Ease Bill.csproj", "{AA342F1D-E5F4-4569-936F-4E64AD463383}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "EaseBill Installer", "EaseBill Installer\EaseBill Installer.vdproj", "{B2CB2ED4-7A4F-4618-B05F-2301197AF207}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA342F1D-E5F4-4569-936F-4E64AD463383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA342F1D-E5F4-4569-936F-4E64AD463383}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA342F1D-E5F4-4569-936F-4E64AD463383}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA342F1D-E5F4-4569-936F-4E64AD463383}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2CB2ED4-7A4F-4618-B05F-2301197AF207}.Debug|Any CPU.ActiveCfg = Debug
+		{B2CB2ED4-7A4F-4618-B05F-2301197AF207}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

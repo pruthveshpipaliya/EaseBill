@@ -1,0 +1,83 @@
+﻿<Window x:Class="Ease_Bill.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFAutoCompleteTextbox"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="Ease Billing" Height="704" Width="1040.5" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="600" Icon="EBLogo.png" ShowInTaskbar="False">
+    <Grid Background="#FFE5EBF2">
+        <Rectangle Fill="#FFFAFAFA" Height="152" Margin="10,58,10,0" Stroke="Black" VerticalAlignment="Top"/>
+
+        <Label Content="Invoice No" HorizontalAlignment="Left" Height="27" Margin="23,18,0,0" VerticalAlignment="Top" Width="78" FontWeight="Bold"/>
+        <local:AutoCompleteTextBox x:Name="cl_InvoiceNo" HorizontalAlignment="Left" Height="27" Margin="106,18,0,0" VerticalAlignment="Top" Width="254" />
+
+        <Label Content="Invoice Date" HorizontalAlignment="Left" Height="27" Margin="383,18,0,0" VerticalAlignment="Top" Width="82" FontWeight="Bold"/>
+        <DatePicker Foreground="{DynamicResource txtColor}" x:Name="cl_InvoiceDate" SelectedDate="{x:Static sys:DateTime.Now}" HorizontalAlignment="Left" Height="27" Margin="470,18,0,0" VerticalAlignment="Top" Width="131"/>
+
+        <Label Content="Buyer Name" HorizontalAlignment="Left" Height="27" Margin="23,71,0,0" VerticalAlignment="Top" Width="78" FontWeight="Bold"/>
+        <local:AutoCompleteTextBox x:Name="cl_BuyerName" HorizontalAlignment="Left" Height="27" Margin="106,71,0,0" VerticalAlignment="Top" Width="254" />
+
+        <Label Content="Address" Height="27" Margin="45,103,0,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="56"/>
+        <local:AutoCompleteTextBox x:Name="cl_Address" Height="27" Margin="106,103,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="254" />
+
+        <Label Content="City" Height="27" Margin="67,135,0,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="34"/>
+        <local:AutoCompleteTextBox x:Name="cl_City" HorizontalAlignment="Left" Height="27" Margin="106,135,0,0" VerticalAlignment="Top" Width="254" />
+
+        <Label Content="GSTIN" Height="27" Margin="54,167,0,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="47"/>
+        <local:AutoCompleteTextBox x:Name="cl_BuyerGSTIN" HorizontalAlignment="Left" Height="27" Margin="106,167,0,0" VerticalAlignment="Top" Width="254" />
+
+        <Label Content="Description" Height="27" Margin="10,221,0,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="124"/>
+        <local:AutoCompleteTextBox x:Name="cl_DescriptionToAdd" Height="27" Margin="10,248,672,0" VerticalAlignment="Top" />
+
+        <Label Content="Challan No" Height="27" Margin="0,221,596,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Right" Width="71"/>
+        <local:AutoCompleteTextBox x:Name="cl_ChallanNoToAdd" HorizontalAlignment="Right" Height="27" Margin="0,248,554,0" VerticalAlignment="Top" Width="113" />
+
+        <Label Content="Challan Date" Height="27" Margin="0,221,461,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Right" Width="86"/>
+        <DatePicker Foreground="{DynamicResource txtColor}" x:Name="cl_ChallanDateToAdd" HorizontalAlignment="Right" Height="27" Margin="0,248,431,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="0.442,0.296"/>
+
+        <Label Content="SAC Code" Height="27" Margin="0,221,355,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Right" Width="71"/>
+        <local:AutoCompleteTextBox x:Name="cl_SACCodeToAdd" HorizontalAlignment="Right" Height="27" Margin="0,248,318,0" VerticalAlignment="Top" Width="108" />
+
+        <Label Content="Quantity" Height="27" Margin="0,221,242,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Right" Width="71"/>
+        <local:AutoCompleteTextBox x:Name="cl_QuantityToAdd" HorizontalAlignment="Right" Height="27" Margin="0,248,231,0" VerticalAlignment="Top" Width="82" />
+
+        <Label Content="Rate" Height="27" Margin="0,221,155,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Right" Width="71"/>
+        <local:AutoCompleteTextBox x:Name="cl_RateToAdd" HorizontalAlignment="Right" Height="27" Margin="0,248,86,0" VerticalAlignment="Top" Width="140" />
+
+        <Button Content="Add" HorizontalAlignment="Right" Height="27" Margin="0,248,10,0" VerticalAlignment="Top" Width="71" Click="OnAddNewRow"/>
+
+        <DataGrid x:Name="cl_DataTable" Margin="10,280,10,173" VirtualizingStackPanel.IsVirtualizing="False" MouseDoubleClick="OnDoubleClickDataTable">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="3*" Binding="{Binding Path=clDescripitonCol, Mode=OneWay}" ClipboardContentBinding="{x:Null}" HeaderStringFormat="" Header="Description" IsReadOnly="False"/>
+                <DataGridTextColumn Width="2*" Binding="{Binding Path=clChallanNoCol, Mode=OneWay}" ClipboardContentBinding="{x:Null}" HeaderStringFormat="" Header="Challan No." IsReadOnly="False"/>
+                <DataGridTextColumn Width="2*" Binding="{Binding Path=clChallanDateCol, Mode=OneWay}" ClipboardContentBinding="{x:Null}" HeaderStringFormat="" Header="Challan Date" IsReadOnly="False"/>
+                <DataGridTextColumn Width="2*" Binding="{Binding Path=clSACCodeCol, Mode=OneWay}" ClipboardContentBinding="{x:Null}" HeaderStringFormat="" Header="SAC Code" IsReadOnly="False"/>
+                <DataGridTextColumn Width="1*" Binding="{Binding Path=clQuantityCol, Mode=OneWay}" ClipboardContentBinding="{x:Null}" HeaderStringFormat="" Header="Quantity" IsReadOnly="False"/>
+                <DataGridTextColumn Width="2*" Binding="{Binding Path=clRateCol, Mode=OneWay}" ClipboardContentBinding="{x:Null}" HeaderStringFormat="" Header="Rate" IsReadOnly="False"/>
+                <DataGridTextColumn Width="2*" Binding="{Binding Path=clAmountCol, Mode=OneWay}" ClipboardContentBinding="{x:Null}" HeaderStringFormat="" Header="Amount" IsReadOnly="False"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Content="Sub Total" Margin="0,0,214,141" FontWeight="Bold" HorizontalAlignment="Right" Width="65" Height="27" VerticalAlignment="Bottom"/>
+        <local:AutoCompleteTextBox x:Name="cl_Subtotal" Margin="0,0,10,141" HorizontalAlignment="Right" Width="199" Height="27" VerticalAlignment="Bottom" />
+
+        <Label Content="CGST 2.5%" Margin="0,0,214,109" FontWeight="Bold" HorizontalAlignment="Right" Width="74" Height="27" VerticalAlignment="Bottom"/>
+        <local:AutoCompleteTextBox x:Name="cl_CGSTTotal" Margin="0,0,10,109" Height="27" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="199" />
+
+        <Label Content="SGST 2.5%" Margin="0,0,214,77" FontWeight="Bold" HorizontalAlignment="Right" Width="74" Height="27" VerticalAlignment="Bottom"/>
+        <local:AutoCompleteTextBox x:Name="cl_SGSTTotal" Margin="0,0,10,77" Height="27" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="199" />
+
+        <Label Content="Total" Margin="0,0,214,45" FontWeight="Bold" HorizontalAlignment="Right" Width="41" Height="27" VerticalAlignment="Bottom"/>
+        <local:AutoCompleteTextBox x:Name="cl_Total" Margin="0,0,10,45" Height="27" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="199" />
+
+        <Label Content="Other Details" Height="27" Margin="10,0,0,141" VerticalAlignment="Bottom" FontWeight="Bold" HorizontalAlignment="Left" Width="124"/>
+        <TextBox Foreground="{DynamicResource txtColor}" x:Name="cl_OtherDetails" Margin="10,0,293,33" TextWrapping="Wrap" Height="108" VerticalAlignment="Bottom"/>
+
+        <Button Content="Print Bill" Margin="0,0,112,10" Click="OnPrintBtnClicked" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="97"/>
+        <Button Content="Clear Details" Margin="0,0,10,10" Click="OnClearFormBtnClicked" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="97"/>
+        <CheckBox x:Name="cl_TriplicateBillCheckBox" Content="Print Triplicate Bill" HorizontalAlignment="Left" Margin="10,0,0,10" Width="254" Height="18" VerticalAlignment="Bottom" IsChecked="True"/>
+
+    </Grid>
+</Window>
